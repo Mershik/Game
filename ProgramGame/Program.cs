@@ -35,7 +35,7 @@ namespace Fight
                     return healthHero;
                 }
 
-                attackM = attackMonster.Next(15, 20);
+                attackM = attackMonster.Next(10, 20);
                 healthHero -= attackM;
 
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -81,12 +81,15 @@ namespace Fight
             Console.WriteLine("На вас напали!");
 
             int healthHero = 100;
+            int count = 0;
 
-            healthHero = Fight(healthHero);
-            finalFight(healthHero);
-
-
-
+            while (healthHero > 0)
+            {
+                healthHero = Fight(healthHero);
+                finalFight(healthHero);
+                count++;
+            }
+            Console.WriteLine($"Вы уничтожили {count - 1} монстров");
             Console.ReadKey();
 
         }
