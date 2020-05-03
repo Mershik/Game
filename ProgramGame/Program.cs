@@ -23,7 +23,10 @@ namespace Fight
                 attackH = attackHero.Next(20, 35);
                 healthMonster -= attackH;
 
-                Console.WriteLine($"Герой бъет с силой {attackH}. \nУ монстра осталось {healthMonster} HP");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"Герой бъет с силой {attackH}.");               
+                Console.ResetColor();
+                Console.WriteLine($"У монстра осталось { healthMonster} HP"); 
                 Thread.Sleep(1000);
 
                 if (healthMonster <= 0)
@@ -32,11 +35,13 @@ namespace Fight
                     return healthHero;
                 }
 
-                Console.WriteLine();
                 attackM = attackMonster.Next(15, 20);
                 healthHero -= attackM;
 
-                Console.WriteLine($"Монстр кусает зубами на {attackM}\nУ героя осталось {healthHero} HP");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"Монстр кусает зубами на {attackM}");
+                Console.ResetColor();
+                Console.WriteLine($"У героя осталось {healthHero} HP");
                 Thread.Sleep(1000);
                 Console.WriteLine();
 
@@ -52,17 +57,23 @@ namespace Fight
             return healthHero;
         }
 
-        static void finalFight(int healthHero)
+        static int finalFight(int healthHero)
         {
             if (healthHero > 0)
             {
-                Console.WriteLine("Победа! Вы получили кучу опыта!");
-                Console.WriteLine("Ваше ХП " + healthHero);
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("Победа! Вы получили кучу опыта и 50 HP!");
+                Console.ResetColor();
+                Console.WriteLine("Ваше ХП " + (healthHero + 50));
             }
             else
             {
+                Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine("Герой храбро погиб");
+                Console.ResetColor();
             }
+
+            return healthHero;
         }
 
         static void Main(string[] args)
@@ -73,6 +84,7 @@ namespace Fight
 
             healthHero = Fight(healthHero);
             finalFight(healthHero);
+
 
 
             Console.ReadKey();
