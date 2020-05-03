@@ -165,7 +165,6 @@ namespace Fight
                             if (healthHero > 0)
                             {
                                 healthHero += 50;
-                                count++;
                                 Console.ForegroundColor = ConsoleColor.DarkYellow;
                                 Console.WriteLine("Вы истребили потомство, которое не давало жить этой долине.");
                                 count++;
@@ -218,27 +217,6 @@ namespace Fight
                 Console.WriteLine($"Поздравляем, вы уничтожили {count} монстров. В долине вы стали героем");
             }
 
-
-            //while (healthHero > 0)
-            //{
-            //    healthHero = Fight(healthHero);
-            //    finalFight(healthHero);
-
-            //    count++;
-            //    if (healthHero > 0)
-            //    {
-            //        healthHero += 50;
-            //    }
-            //    if (count == 5)
-            //    {
-            //        Console.ForegroundColor = ConsoleColor.Yellow;
-            //        Console.WriteLine($"Победа! Вы уничтожили {count - 1} монстров! Подземелье в безопасности");                   
-            //        Console.ResetColor();
-            //        return;
-            //    }
-            //}
-            //Console.WriteLine($"Вы уничтожили {count - 1} монстров");
-            
             Console.ReadKey();
 
         }
