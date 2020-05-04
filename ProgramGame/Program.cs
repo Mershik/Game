@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using System.Threading;
 using ProgramGame;
 
@@ -19,7 +20,6 @@ namespace Fight
             Console.WriteLine("Вы спускаетесь в подземелье.");
             Console.WriteLine("Перед вами находится железная и деревянная дверь.");
             Console.WriteLine("Какую выберете 1 или 2?");
-
             Console.ResetColor();
 
             switch (Console.ReadLine())
@@ -47,6 +47,7 @@ namespace Fight
                             Thread.Sleep(5000);
                             healthHero = 0;
                             break;
+
                         case "2":
                             Console.ForegroundColor = ConsoleColor.DarkYellow;
                             Console.WriteLine();
@@ -54,6 +55,7 @@ namespace Fight
                             Thread.Sleep(5000);
                             healthHero = 0;
                             break;
+
                         case "3":
                             Console.ForegroundColor = ConsoleColor.DarkYellow;
                             Console.WriteLine();
@@ -61,15 +63,8 @@ namespace Fight
                             Thread.Sleep(5000);
                             healthHero = fightModule.Fight(healthHero, 70);
                             finalFight.EndFight(healthHero, 40);
-                            //exp.Expiriense(healthHero, count);
-                            //if (healthHero > 0)
-                            //{
-                            //    healthHero += 50;
-                            //    Console.ForegroundColor = ConsoleColor.DarkYellow;
-                            //    Console.WriteLine("Вы истребили потомство, которое не давало жить этой долине.");
-                            //    count++;
-                            //}
                             break;
+
                         default:
                             Console.WriteLine("Вам падает на голову камень и вы умираете");
                             healthHero = 0;
@@ -81,7 +76,6 @@ namespace Fight
                     Console.WriteLine();
                     Console.WriteLine("Вы слышите топот свирепых монстров и хватаетесь за оружие ");
                     Thread.Sleep(3000);
-
 
                     for (int i = 1; i < 4; i++)
                     {
