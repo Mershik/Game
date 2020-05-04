@@ -9,12 +9,11 @@ namespace Fight
     {
         static void Main(string[] args)
         {
-            int healthHero = 500;
+            int healthHero = 10;
             int count = 0;
 
             FightModule fightModule = new FightModule();
             FinalFight finalFight = new FinalFight();
-            FinalFight exp = new FinalFight();
 
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("Вы спускаетесь в подземелье.");
@@ -30,8 +29,8 @@ namespace Fight
                     Console.WriteLine("Внезапно вы видите приближающегося огромного монстра, который вступает с вами в бой");
                     Thread.Sleep(5000);
 
-                    healthHero = fightModule.Fight(healthHero, 150);
-                    finalFight.EndFight(healthHero,40);
+                    healthHero = fightModule.Fight(healthHero, 7);
+                    finalFight.EndFight(healthHero, 4);
                     Console.WriteLine();
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
                     Console.WriteLine("Перед вами стоит три сундука, какой вы возьмете?");
@@ -61,8 +60,8 @@ namespace Fight
                             Console.WriteLine();
                             Console.WriteLine("В сундуке вы находите яйцо монстра, которое вылупляется и атакует");
                             Thread.Sleep(5000);
-                            healthHero = fightModule.Fight(healthHero, 70);
-                            finalFight.EndFight(healthHero, 40);
+                            healthHero = fightModule.Fight(healthHero, 5);
+                            finalFight.EndFight(healthHero, 4);
                             break;
 
                         default:
@@ -80,15 +79,15 @@ namespace Fight
                     for (int i = 1; i < 4; i++)
                     {
                         Console.WriteLine($"{i} монстр нападает");
-                        healthHero = fightModule.Fight(healthHero, 50);
-                        finalFight.EndFight(healthHero,40);
+                        healthHero = fightModule.Fight(healthHero, 5);
+                        finalFight.EndFight(healthHero,4);
                         Console.WriteLine();
                         Console.WriteLine($"Ты уничтожил {i} монстра");
                         Console.WriteLine();
                         Thread.Sleep(3000);
                         if (healthHero > 0)
                         {
-                            healthHero += 50;
+                            healthHero += 5;
                             Console.ForegroundColor = ConsoleColor.DarkYellow;
                             Console.WriteLine("Вы истребили потомство, которое не давало жить этой долине.");
                             count++;

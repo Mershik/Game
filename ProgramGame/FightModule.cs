@@ -32,7 +32,7 @@ namespace ProgramGame
                 if (critAttackHero.Next(1, 5) == 1)
                 {
                     Console.WriteLine();
-                    attackH = attackHero.Next(10, 25);
+                    attackH = attackHero.Next(2, 3);
                     healthMonster -= attackH * 2;
 
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
@@ -44,7 +44,7 @@ namespace ProgramGame
                 else
                 {
                     Console.WriteLine();
-                    attackH = attackHero.Next(10, 25);
+                    attackH = attackHero.Next(2, 3);
                     healthMonster -= attackH;
 
                     Console.ForegroundColor = ConsoleColor.Green;
@@ -60,7 +60,7 @@ namespace ProgramGame
                     return healthHero;
                 }
 
-                attackM = attackMonster.Next(15, 25);
+                attackM = attackMonster.Next(1, 3);
                 healthHero -= attackM;
 
                 Console.ForegroundColor = ConsoleColor.Red;
