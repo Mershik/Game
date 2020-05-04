@@ -24,11 +24,16 @@ namespace ProgramGame
             Console.WriteLine("HP монстра = " + healthMonster);
             Thread.Sleep(3000);
             Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine();
             Console.WriteLine("В Атаку!!!");
+            Console.WriteLine("*нанесите удар, нажав любую клавишу*");
             Console.ResetColor();
 
             while (healthHero > 0)
             {
+
+                Console.ReadKey();
+
                 if (critAttackHero.Next(1, 5) == 1)
                 {
                     Console.WriteLine();

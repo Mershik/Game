@@ -20,7 +20,14 @@ namespace ProgramGame
             else
             {
                 Console.ForegroundColor = ConsoleColor.Blue;
-                Console.WriteLine("Герой храбро погиб");
+                Console.WriteLine("*****************************");
+                Console.WriteLine();
+                Console.WriteLine("     Герой храбро погиб");
+                Console.WriteLine(); 
+                Console.WriteLine("*****************************");
+
+                Thread.Sleep(3000);
+               
                 Console.ResetColor();
             }
             return healthHero;
