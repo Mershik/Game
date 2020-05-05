@@ -42,10 +42,9 @@ namespace ProgramGame
                 case "3":
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
                     Console.WriteLine();
-                    Console.WriteLine("В сундуке вы находите яйцо монстра, которое вылупляется и атакует");
+                    Console.WriteLine("В сундуке вы находите Ржавый шлем (+5 HP)");
                     Thread.Sleep(5000);
-                    healthHero = fightModule.Fight(healthHero, weaponHeroMaxAttack, 5);
-                    finalFight.EndFight(healthHero, weaponHeroMaxAttack, count, bonusHealth); 
+                    healthHero += 5;
                     break;
 
                 default:

@@ -55,7 +55,7 @@ namespace ProgramGame
 
                 if (critAttackMonster.Next(1, 3) == 1)
                 {
-                    attackM = attackMonster.Next(1, 2);
+                    attackM = attackMonster.Next(1, 4);
                     healthHero -= attackM * 2;
 
                     Console.ForegroundColor = ConsoleColor.DarkRed;
@@ -63,7 +63,7 @@ namespace ProgramGame
                 }
                 else
                 { 
-                    attackM = attackMonster.Next(1, 2);
+                    attackM = attackMonster.Next(1, 4);
                     healthHero -= attackM;
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine($"Монстр наносит урон {attackM}");
