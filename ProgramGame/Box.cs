@@ -9,7 +9,7 @@ namespace ProgramGame
 {
     public class Box 
     {
-        public int ThreeBoxes(int healthHero, int weaponHeroMinAttack, int weaponHeroMaxAttack, int count, int bonusHealth) 
+        public int ThreeBoxes(int healthHero, int weaponHeroMaxAttack, int count, int bonusHealth) 
         {
             FightModule fightModule = new FightModule();
             FinalFight finalFight = new FinalFight();
@@ -44,8 +44,8 @@ namespace ProgramGame
                     Console.WriteLine();
                     Console.WriteLine("В сундуке вы находите яйцо монстра, которое вылупляется и атакует");
                     Thread.Sleep(5000);
-                    healthHero = fightModule.Fight(healthHero, weaponHeroMinAttack, weaponHeroMaxAttack, 5);
-                    finalFight.EndFight(healthHero, weaponHeroMinAttack, weaponHeroMaxAttack, count, bonusHealth); 
+                    healthHero = fightModule.Fight(healthHero, weaponHeroMaxAttack, 5);
+                    finalFight.EndFight(healthHero, weaponHeroMaxAttack, count, bonusHealth); 
                     break;
 
                 default:

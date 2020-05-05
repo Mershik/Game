@@ -7,7 +7,6 @@ namespace ProgramGame
     {
 
         public int Fight(int healthHero,                      
-                         int weaponHeroMinAttack,
                          int weaponHeroMaxAttack,
                          int healthMonster)
         {
@@ -26,13 +25,13 @@ namespace ProgramGame
 
             while (healthHero > 0)
             {
-                menu.FightMenu(healthHero, weaponHeroMinAttack, weaponHeroMaxAttack, healthMonster);
+                menu.FightMenu(healthHero, weaponHeroMaxAttack, healthMonster);
 
                 Thread.Sleep(1000);
                 if (_ = critAttackHero.Next(1, 4) == 1)
                 {
                     Console.WriteLine();
-                    attackH = attackHero.Next(weaponHeroMinAttack, weaponHeroMaxAttack);
+                    attackH = attackHero.Next(1, weaponHeroMaxAttack);
                     healthMonster -= attackH * 2;
 
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
@@ -41,7 +40,7 @@ namespace ProgramGame
                 else
                 {
                     Console.WriteLine();
-                    attackH = attackHero.Next(weaponHeroMinAttack, weaponHeroMaxAttack);
+                    attackH = attackHero.Next(1, weaponHeroMaxAttack);
                     healthMonster -= attackH;
 
                     Console.ForegroundColor = ConsoleColor.Green;

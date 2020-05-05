@@ -10,9 +10,8 @@ namespace Fight
         static void Main(string[] args)
         {
             int healthHero = 100;
-            int weaponHeroMinAttack = 1;
             int weaponHeroMaxAttack = 3;
-            int coin = 5;
+            //int coin = 5;
 
             int bonusHealth = 4;
             int count = 0;
@@ -25,14 +24,25 @@ namespace Fight
             Menu text = new Menu();
 
 
-            text.Story("Вы спускаетесь в подземелье к монстрам\n");
+            //text.Story("Вы спускаетесь в подземелье к монстрам\n");
          
             while (healthHero > 0)
             {
-                menu.Stats(healthHero, weaponHeroMinAttack, weaponHeroMaxAttack, count);
+                menu.Stats(healthHero, weaponHeroMaxAttack, count);
 
-                Console.WriteLine("Сундук");
+                Console.WriteLine("Возьмете в сундуке обмундирование? \nВведите да/нет\n");
 
+                switch (Console.ReadLine())
+                {
+                    case "да":
+                        Shop shop = new Shop();
+                        healthHero = shop.Shoping(healthHero, weaponHeroMaxAttack);
+                        break;
+                    default:
+                        break;
+                }
+
+                menu.Stats(healthHero, weaponHeroMaxAttack, count);
 
                 text.Story("Перед вами находится железная и деревянная дверь\nКакую выберете 1 или 2?");
 
@@ -42,13 +52,13 @@ namespace Fight
                         text.Story("Вы проходите железную дверь\nВнезапно вы видите приближающегося огромного монстра, который вступает с вами в бой ");
                         Thread.Sleep(5000);
 
-                        healthHero = fightModule.Fight(healthHero, weaponHeroMinAttack, weaponHeroMaxAttack, 100);
-                        healthHero = finalFight.EndFight(healthHero, weaponHeroMinAttack, weaponHeroMaxAttack, count, bonusHealth);
+                        healthHero = fightModule.Fight(healthHero, weaponHeroMaxAttack, 100);
+                        healthHero = finalFight.EndFight(healthHero, weaponHeroMaxAttack, count, bonusHealth);
                         if (healthHero > 0)
                         {
                             count++;                           
                             text.Story("Перед вами стоит три сундука, какой выберете?");
-                            boxes.ThreeBoxes(healthHero, weaponHeroMinAttack, weaponHeroMaxAttack, count, bonusHealth);
+                            boxes.ThreeBoxes(healthHero, weaponHeroMaxAttack, count, bonusHealth);
                             break;
                         }
                         else
@@ -63,8 +73,8 @@ namespace Fight
                         for (int i = 1; i < 4; i++)
                         {
                             Console.WriteLine($"{i} монстр нападает");
-                            healthHero = fightModule.Fight(healthHero, weaponHeroMinAttack, weaponHeroMaxAttack, 5);
-                            finalFight.EndFight(healthHero, weaponHeroMinAttack, weaponHeroMaxAttack, count, bonusHealth);
+                            healthHero = fightModule.Fight(healthHero, weaponHeroMaxAttack, 5);
+                            finalFight.EndFight(healthHero, weaponHeroMaxAttack, count, bonusHealth);
                             Console.WriteLine();
                             Console.WriteLine($"Ты уничтожил {i} монстра\n");
                             Thread.Sleep(3000);

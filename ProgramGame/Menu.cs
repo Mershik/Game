@@ -8,7 +8,7 @@ namespace ProgramGame
 {
     public class Menu
     {
-        public void Stats(int healthHero, int weaponHeroMinAttack, int weaponHeroMaxAttack, int count)
+        public void Stats(int healthHero, int weaponHeroMaxAttack, int count)
         {
             Console.Clear();
             Console.WriteLine("******* Состояние героя *******\n");
@@ -16,7 +16,7 @@ namespace ProgramGame
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine($"Health Point (HP).........{healthHero}");
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"Сила атаки................{weaponHeroMinAttack}-{weaponHeroMaxAttack}");
+            Console.WriteLine($"Сила атаки................1 - {weaponHeroMaxAttack}");
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine($"Убито монстров............{count}\n");
             Console.ResetColor();
@@ -31,10 +31,9 @@ namespace ProgramGame
             Console.ResetColor();
         }
 
-        public void FightMenu(int healthHero,
-                                int weaponHeroMinAttack,
-                                int weaponHeroMaxAttack,
-                                int healthMonster)
+        public void FightMenu(int healthHero,                               
+                              int weaponHeroMaxAttack,
+                              int healthMonster)
         {    
 
                         Console.Clear();
