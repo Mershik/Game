@@ -13,6 +13,7 @@ namespace Fight
             int weaponHeroMinAttack = 1;
             int weaponHeroMaxAttack = 3;
 
+            int bonusHealth = 4;
             int count = 0;
 
             FightModule fightModule = new FightModule();
@@ -37,12 +38,12 @@ namespace Fight
                         Thread.Sleep(5000);
 
                         healthHero = fightModule.Fight(healthHero, weaponHeroMinAttack, weaponHeroMaxAttack, 10);
-                        finalFight.EndFight(healthHero, 4);
+                        healthHero = finalFight.EndFight(healthHero, bonusHealth);
                         if (healthHero > 0)
                         {
                             count++;
                             text.Story("Перед вами стоит три сундука, какой выберете?");
-                            boxes.ThreeBoxes(healthHero, weaponHeroMinAttack, weaponHeroMaxAttack);
+                            boxes.ThreeBoxes(healthHero, weaponHeroMinAttack, weaponHeroMaxAttack, bonusHealth);
                             break;
                         }
                         else
@@ -58,7 +59,7 @@ namespace Fight
                         {
                             Console.WriteLine($"{i} монстр нападает");
                             healthHero = fightModule.Fight(healthHero, weaponHeroMinAttack, weaponHeroMaxAttack, 5);
-                            finalFight.EndFight(healthHero, 4);
+                            finalFight.EndFight(healthHero, bonusHealth);
                             Console.WriteLine();
                             Console.WriteLine($"Ты уничтожил {i} монстра\n");
                             Thread.Sleep(3000);

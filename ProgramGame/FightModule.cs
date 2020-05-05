@@ -17,8 +17,7 @@ namespace ProgramGame
             Random attackHero = new Random();
             Random attackMonster = new Random();
             Random critAttackHero = new Random();
-            Random critAttackMonster = new Random();
-
+            Random critAttackMonster = new Random();          
 
             Menu menu = new Menu();
             menu.FightMenu(healthHero, healthMonster);
@@ -48,6 +47,7 @@ namespace ProgramGame
                 Thread.Sleep(500);
 
                 if (healthMonster <= 0)
+
                     return healthHero;
 
                 if (critAttackMonster.Next(1, 5) == 1)
