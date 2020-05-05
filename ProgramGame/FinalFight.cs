@@ -9,29 +9,27 @@ namespace ProgramGame
         {
             if (healthHero > 0)
             {
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine($"Монстр мертв и его душа излечивает вас на {bonusHealth} HP!");
-                Console.ResetColor();
-                Console.WriteLine("Ваше ХП " + (healthHero + bonusHealth));
+                Menu menu = new Menu();
+                Console.WriteLine("*****************************");
+                menu.Story($"ПОБЕДА!\nМонстр мертв и его душа излечивает вас на {bonusHealth} HP!\n");
                 healthHero += bonusHealth;
-                Console.WriteLine("Это был длинный бой, но не следует останавливаться");
+                Console.WriteLine("*****************************\n");
+                menu.Story("Это был трудный бой, но не следует останавливаться");
                 Thread.Sleep(3000);
             }
             else
             {
                 Console.ForegroundColor = ConsoleColor.Blue;
-                Console.WriteLine("*****************************");
-                Console.WriteLine();
-                Console.WriteLine("     Герой храбро погиб");
-                Console.WriteLine(); 
-                Console.WriteLine("*****************************");
-
-                Thread.Sleep(3000);
-               
+                Console.WriteLine("*****************************\n");
+                Console.WriteLine("     Герой храбро погиб\n");
+                Console.WriteLine("*****************************\n");
+                Thread.Sleep(3000);               
                 Console.ResetColor();
             }
+
             return healthHero;
         }
     }
 
 }
+

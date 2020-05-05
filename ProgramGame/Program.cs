@@ -10,50 +10,39 @@ namespace Fight
         static void Main(string[] args)
         {
             int healthHero = 10;
+            int weaponHeroMinAttack = 1;
+            int weaponHeroMaxAttack = 3;
+
             int count = 0;
 
             FightModule fightModule = new FightModule();
             FinalFight finalFight = new FinalFight();
             Box boxes = new Box();
+            Menu menu = new Menu();
+            Menu text = new Menu();
 
+
+            text.Story("Вы спускаетесь в подземелье к монстрам\n");
          
-            Console.WriteLine("Вы спускаетесь в подземелье к монстрам");
             while (healthHero > 0)
             {
-                Console.WriteLine();
-                Console.WriteLine("*******Состояние героя*******");
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine();
-                Console.WriteLine($"Health Point (HP).........{healthHero}");
-                Console.ForegroundColor = ConsoleColor.Blue;
-                Console.WriteLine($"Убито монстров............{count}");
-                Console.ResetColor();
-                Console.WriteLine();
-                Console.WriteLine("*****************************");
-                Console.WriteLine();
+                menu.Stats(healthHero, weaponHeroMinAttack, weaponHeroMaxAttack, count);
 
-                Console.ForegroundColor = ConsoleColor.DarkYellow;
-                Console.WriteLine("Перед вами находится железная и деревянная дверь.");
-                Console.WriteLine("Какую выберете 1 или 2?");
-                Console.ResetColor();
+                text.Story("Перед вами находится железная и деревянная дверь\nКакую выберете 1 или 2?");
 
                 switch (Console.ReadLine())
                 {
                     case "1":
-                        Console.WriteLine();
-                        Console.WriteLine("Вы проходите железную дверь");
-                        Console.WriteLine("Внезапно вы видите приближающегося огромного монстра, который вступает с вами в бой");
+                        text.Story("Вы проходите железную дверь\nВнезапно вы видите приближающегося огромного монстра, который вступает с вами в бой ");
                         Thread.Sleep(5000);
 
-                        healthHero = fightModule.Fight(healthHero, 7);
+                        healthHero = fightModule.Fight(healthHero, weaponHeroMinAttack, weaponHeroMaxAttack, 10);
                         finalFight.EndFight(healthHero, 4);
                         if (healthHero > 0)
                         {
                             count++;
-                            Console.WriteLine();
-                            Console.ForegroundColor = ConsoleColor.DarkYellow;
-                            Console.WriteLine("Перед вами стоит три сундука, какой вы возьмете?");
-                            boxes.ThreeBoxes(healthHero);
+                            text.Story("Перед вами стоит три сундука, какой выберете?");
+                            boxes.ThreeBoxes(healthHero, weaponHeroMinAttack, weaponHeroMaxAttack);
                             break;
                         }
                         else
@@ -62,33 +51,25 @@ namespace Fight
                         }
 
                     case "2":
-                        Console.WriteLine();
-                        Console.WriteLine("Вы слышите топот свирепых монстров и хватаетесь за оружие ");
+                        text.Story("Вы слышите топот свирепых монстров и хватаетесь за оружие ");
                         Thread.Sleep(3000);
 
                         for (int i = 1; i < 4; i++)
                         {
                             Console.WriteLine($"{i} монстр нападает");
-                            healthHero = fightModule.Fight(healthHero, 5);
+                            healthHero = fightModule.Fight(healthHero, weaponHeroMinAttack, weaponHeroMaxAttack, 5);
                             finalFight.EndFight(healthHero, 4);
                             Console.WriteLine();
-                            Console.WriteLine($"Ты уничтожил {i} монстра");
-                            Console.WriteLine();
+                            Console.WriteLine($"Ты уничтожил {i} монстра\n");
                             Thread.Sleep(3000);
                             if (healthHero > 0)
                             {
-                                healthHero += 5;
-                                Console.ForegroundColor = ConsoleColor.DarkYellow;
-                                Console.WriteLine("Вы истребили потомство, которое не давало жить этой долине.");
-                                Console.ResetColor();
+                                healthHero += 4;
+                                text.Story("Следующий монстр на подходе");
                                 count++;
-                                Console.WriteLine("Комната чиста");
-                                Thread.Sleep(5000);
                             }
                             else
-                            {
                                 break;
-                            }
                         }
                         break;
                     default:
@@ -98,11 +79,8 @@ namespace Fight
 
                 if (healthHero <= 0)
                 {
-                    Console.WriteLine();
-                    Console.ForegroundColor = ConsoleColor.DarkYellow;
                     healthHero = 5;
-                    Console.WriteLine($"Внезапно вы появляетесь у входа в пещеру со {healthHero}, продолжить? 'да/нет'");
-                    Console.WriteLine();
+                    text.Story($"Внезапно вы появляетесь у входа в пещеру со {healthHero}, продолжить? 'да/нет'\n");
 
                     switch (Console.ReadLine())
                     {
@@ -116,10 +94,7 @@ namespace Fight
                 }
                 else
                 {
-                    Console.WriteLine();
-                    Console.ForegroundColor = ConsoleColor.DarkYellow;
-                    Console.WriteLine("Вы возвращаетесь в начало. Продолжить? 'да/нет'");
-                    Console.WriteLine();
+                    text.Story("Вы возвращаетесь в начало. Продолжить? 'да/нет'");
 
                     switch (Console.ReadLine())
                     {
@@ -127,18 +102,7 @@ namespace Fight
                             continue;
 
                         default:
-                            Console.WriteLine();
-                            Console.WriteLine("*******КОНЕЦ ИГРЫ*******");
-                            Console.ForegroundColor = ConsoleColor.Red;
-                            Console.WriteLine();
-                            Console.WriteLine($"Health Point (HP).........{healthHero}");
-                            Console.ForegroundColor = ConsoleColor.Blue;
-                            Console.WriteLine($"Убито монстров............{count}");
-                            Console.ResetColor();
-                            Console.WriteLine();
-                            Console.WriteLine("*****************************");
-                            Console.WriteLine();
-
+                            text.EndGame(healthHero, count);
                             healthHero = -1;
                             break;
                     }

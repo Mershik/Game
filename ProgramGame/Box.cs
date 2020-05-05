@@ -8,7 +8,7 @@ namespace ProgramGame
 {
     public class Box 
     {
-        public int ThreeBoxes(int healthHero) 
+        public int ThreeBoxes(int healthHero, int weaponHeroMinAttack, int weaponHeroMaxAttack) 
         {
             FightModule fightModule = new FightModule();
             FinalFight finalFight = new FinalFight();
@@ -16,7 +16,7 @@ namespace ProgramGame
             switch (Console.ReadLine())
             {
 
-                case "1":
+                case "1":                  
                     Console.WriteLine();
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
                     Console.WriteLine("В сундуке вы видите несметные богатства");
@@ -43,14 +43,15 @@ namespace ProgramGame
                     Console.WriteLine();
                     Console.WriteLine("В сундуке вы находите яйцо монстра, которое вылупляется и атакует");
                     Thread.Sleep(5000);
-                    healthHero = fightModule.Fight(healthHero, 5);
-                    finalFight.EndFight(healthHero, 4); // не добавляет счетчик
+                    healthHero = fightModule.Fight(healthHero, weaponHeroMinAttack, weaponHeroMaxAttack, 5);
+                    finalFight.EndFight(healthHero, 4); 
                     break;
 
                 default:
                     Console.WriteLine("Вам падает на голову камень и вы умираете");
                     healthHero = 0;
                     break;
+
             }
             return healthHero;
         }
