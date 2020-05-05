@@ -24,25 +24,43 @@ namespace Fight
             Menu text = new Menu();
 
 
-            //text.Story("Вы спускаетесь в подземелье к монстрам\n");
-         
+            text.Story("Вы спускаетесь в подземелье к монстрам\n");
+            Thread.Sleep(5000);
+
             while (healthHero > 0)
             {
                 menu.Stats(healthHero, weaponHeroMaxAttack, count);
 
-                Console.WriteLine("Возьмете в сундуке обмундирование? \nВведите да/нет\n");
+                Console.WriteLine("Далее сложная дорога, возьмете в сундуке обмундирование? \nВведите да/нет\n");
 
                 switch (Console.ReadLine())
                 {
                     case "да":
-                        Shop shop = new Shop();
-                        healthHero = shop.Shoping(healthHero, weaponHeroMaxAttack);
+                        Console.WriteLine();
+                        Console.WriteLine("Введите номер необходимого снаряжения");
+                        Console.WriteLine("1. Броня");
+                        Console.WriteLine("2. Оружие");
+
+                        switch (Console.ReadLine())
+                        {
+                            case "1":
+                                Shop shop1 = new Shop();
+                                healthHero = shop1.ShopingArmor(healthHero);
+                                break;
+
+                            case "2":
+                                Shop shop2 = new Shop();
+                                weaponHeroMaxAttack = shop2.ShopingWeapon(weaponHeroMaxAttack);
+                                break;
+                            default:
+                                break;
+                        }
                         break;
+
                     default:
                         break;
                 }
-
-                menu.Stats(healthHero, weaponHeroMaxAttack, count);
+                                menu.Stats(healthHero, weaponHeroMaxAttack, count);
 
                 text.Story("Перед вами находится железная и деревянная дверь\nКакую выберете 1 или 2?");
 
