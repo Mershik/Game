@@ -1,14 +1,15 @@
-﻿using System;
+﻿using Fight;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
 
-namespace ProgramGame
+namespace ProgramGame 
 {
     public class Box 
     {
-        public int ThreeBoxes(int healthHero, int weaponHeroMinAttack, int weaponHeroMaxAttack, int bonusHealth) 
+        public int ThreeBoxes(int healthHero, int weaponHeroMinAttack, int weaponHeroMaxAttack, int count, int bonusHealth) 
         {
             FightModule fightModule = new FightModule();
             FinalFight finalFight = new FinalFight();
@@ -44,7 +45,7 @@ namespace ProgramGame
                     Console.WriteLine("В сундуке вы находите яйцо монстра, которое вылупляется и атакует");
                     Thread.Sleep(5000);
                     healthHero = fightModule.Fight(healthHero, weaponHeroMinAttack, weaponHeroMaxAttack, 5);
-                    finalFight.EndFight(healthHero, bonusHealth); 
+                    finalFight.EndFight(healthHero, weaponHeroMinAttack, weaponHeroMaxAttack, count, bonusHealth); 
                     break;
 
                 default:

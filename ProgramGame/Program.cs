@@ -9,12 +9,14 @@ namespace Fight
     {
         static void Main(string[] args)
         {
-            int healthHero = 10;
+            int healthHero = 100;
             int weaponHeroMinAttack = 1;
             int weaponHeroMaxAttack = 3;
+            int coin = 5;
 
             int bonusHealth = 4;
             int count = 0;
+
 
             FightModule fightModule = new FightModule();
             FinalFight finalFight = new FinalFight();
@@ -29,6 +31,9 @@ namespace Fight
             {
                 menu.Stats(healthHero, weaponHeroMinAttack, weaponHeroMaxAttack, count);
 
+                Console.WriteLine("Сундук");
+
+
                 text.Story("Перед вами находится железная и деревянная дверь\nКакую выберете 1 или 2?");
 
                 switch (Console.ReadLine())
@@ -37,13 +42,13 @@ namespace Fight
                         text.Story("Вы проходите железную дверь\nВнезапно вы видите приближающегося огромного монстра, который вступает с вами в бой ");
                         Thread.Sleep(5000);
 
-                        healthHero = fightModule.Fight(healthHero, weaponHeroMinAttack, weaponHeroMaxAttack, 10);
-                        healthHero = finalFight.EndFight(healthHero, bonusHealth);
+                        healthHero = fightModule.Fight(healthHero, weaponHeroMinAttack, weaponHeroMaxAttack, 100);
+                        healthHero = finalFight.EndFight(healthHero, weaponHeroMinAttack, weaponHeroMaxAttack, count, bonusHealth);
                         if (healthHero > 0)
                         {
-                            count++;
+                            count++;                           
                             text.Story("Перед вами стоит три сундука, какой выберете?");
-                            boxes.ThreeBoxes(healthHero, weaponHeroMinAttack, weaponHeroMaxAttack, bonusHealth);
+                            boxes.ThreeBoxes(healthHero, weaponHeroMinAttack, weaponHeroMaxAttack, count, bonusHealth);
                             break;
                         }
                         else
@@ -59,7 +64,7 @@ namespace Fight
                         {
                             Console.WriteLine($"{i} монстр нападает");
                             healthHero = fightModule.Fight(healthHero, weaponHeroMinAttack, weaponHeroMaxAttack, 5);
-                            finalFight.EndFight(healthHero, bonusHealth);
+                            finalFight.EndFight(healthHero, weaponHeroMinAttack, weaponHeroMaxAttack, count, bonusHealth);
                             Console.WriteLine();
                             Console.WriteLine($"Ты уничтожил {i} монстра\n");
                             Thread.Sleep(3000);
@@ -85,7 +90,7 @@ namespace Fight
 
                     switch (Console.ReadLine())
                     {
-                        case "да":
+                        case "да":                            
                             continue;
 
                         default:

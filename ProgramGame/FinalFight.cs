@@ -5,7 +5,7 @@ namespace ProgramGame
 {
     public class FinalFight
     {
-        public int EndFight(int healthHero, int bonusHealth)
+        public int EndFight(int healthHero, int weaponHeroMinAttack, int weaponHeroMaxAttack, int count, int bonusHealth)
         {
             if (healthHero > 0)
             {
@@ -16,6 +16,7 @@ namespace ProgramGame
                 Console.WriteLine("*****************************\n");
                 menu.Story("Это был трудный бой, но не следует останавливаться");
                 Thread.Sleep(3000);
+                menu.Stats(healthHero, weaponHeroMinAttack, weaponHeroMaxAttack, count);
             }
             else
             {

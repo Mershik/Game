@@ -20,18 +20,23 @@ namespace ProgramGame
             Random critAttackMonster = new Random();          
 
             Menu menu = new Menu();
-            menu.FightMenu(healthHero, healthMonster);
+
+            Menu colorfFightMenu = new Menu();
+            colorfFightMenu.Story("Вы достаете оружие и готовитесь к битве\n");
 
             while (healthHero > 0)
             {
-                if (critAttackHero.Next(1, 5) == 1)
+                menu.FightMenu(healthHero, weaponHeroMinAttack, weaponHeroMaxAttack, healthMonster);
+
+                Thread.Sleep(1000);
+                if (_ = critAttackHero.Next(1, 4) == 1)
                 {
                     Console.WriteLine();
                     attackH = attackHero.Next(weaponHeroMinAttack, weaponHeroMaxAttack);
                     healthMonster -= attackH * 2;
 
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
-                    Console.WriteLine($"Герой наносит критический удар {attackH * 2}!");
+                    Console.WriteLine($"Герой наносит критический урон {attackH * 2}!");
                 }
                 else
                 {
@@ -40,34 +45,32 @@ namespace ProgramGame
                     healthMonster -= attackH;
 
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine($"Герой бъет с силой {attackH}.");
+                    Console.WriteLine($"Герой наносит урон {attackH}.");
                 }
                 Console.ResetColor();
-                Console.WriteLine($"У монстра осталось { healthMonster} HP");
-                Thread.Sleep(500);
+                Thread.Sleep(1000);
 
                 if (healthMonster <= 0)
 
                     return healthHero;
 
-                if (critAttackMonster.Next(1, 5) == 1)
+                if (critAttackMonster.Next(1, 3) == 1)
                 {
                     attackM = attackMonster.Next(1, 2);
                     healthHero -= attackM * 2;
 
                     Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.WriteLine($"Монстр наносит критический удар когтями {attackH * 2}!");
+                    Console.WriteLine($"Монстр наносит критический урон {attackH * 2}!");
                 }
                 else
                 { 
                     attackM = attackMonster.Next(1, 2);
                     healthHero -= attackM;
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine($"Монстр кусает зубами на {attackM}");
+                    Console.WriteLine($"Монстр наносит урон {attackM}");
 
                 }
                 Console.ResetColor();
-                Console.WriteLine($"У героя осталось {healthHero} HP\n\n");
                 Thread.Sleep(1000);
 
 
